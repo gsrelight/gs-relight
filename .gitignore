@@ -12,3 +12,7 @@ screenshots
 *.sh
 extrinsic.py
 nohup*
+!real_render.sh
+!real_train.sh
+!syn_render.sh
+!syn_train.sh
