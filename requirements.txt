@@ -1,0 +1,10 @@
+numpy==1.26.3
+plyfile==0.8.1
+gsplat==1.1.1
+opencv-python==4.9.0.80
+tensorboard==2.16.2
+tqdm
+
+git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+submodules/diff-gaussian-rasterization_light
+submodules/simple-knn

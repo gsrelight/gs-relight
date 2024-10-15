@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Cite as below if you find this repository is helpful to your project"
+url: "https://github.com/gsrelight/gs-relight"
+preferred-citation:
+  type: conference-paper
+  authors:
+  - family-names: "Bi"
+    given-names: "Zoubin"
+  - family-names: "Zeng"
+    given-names: "Yizin"
+  - family-names: "Zeng"
+    given-names: "Chong"
+  - family-names: "Pei"
+    given-names: "Fan"
+  - family-names: "Feng"
+    given-names: "Xiang"
+  - family-names: "Zhou"
+    given-names: "Kun"
+  - family-names: "Wu"
+    given-names: "Hongzhi"
+  doi: "10.1145/3680528.3687576"
+  title: "GS^3: Efficient Relighting with Triple Gaussian Splatting"
+  booktitle: "ACM SIGGRAPH Asia 2024 Conference Papers"
+  year: 2024
