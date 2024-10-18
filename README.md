@@ -28,9 +28,9 @@
     |
     <a href="https://gsrelight.github.io/pdfs/GS3.pdf"><strong>Paper</strong></a>
     |
-    <a href=""><strong>arXiv</strong></a>
+    <a href="https://arxiv.org/abs/2410.11419"><strong>arXiv</strong></a>
     |
-    <a href=""><strong>Data</strong></a>
+    <a href="https://huggingface.co/datasets/gsrelight/gsrelight-data"><strong>Data</strong></a>
   </p>
 </p>
 
