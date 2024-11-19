@@ -355,7 +355,51 @@ renderCUDA(
 		}
 		block.sync();
 		
-		// Iterate over current batch
+		// if done, fetch but don't rasterize
+		if(done)
+		{
+			for (int j = 0; j < min(BLOCK_SIZE, toDo); j++)
+			{
+				// skip color and opacity calculation
+				// if now depth - offset point depth>offset
+				if(collected_depth[j]-depthT>offset)
+				{	
+					while(1)
+					{
+						// skip color and opacity calculation
+						// update offset point and offset point depth
+						depthT=collected_depth_pointT[pointT];
+						pointT=pointT+1;
+						if(pointT>=BLOCK_SIZE)
+						{
+							i_pointT+=1;
+							if(i_pointT<rounds)
+							{
+								block.sync();
+								progress_pointT = i_pointT * BLOCK_SIZE + block.thread_rank();
+								if (range.x + progress_pointT < range.y)
+								{
+									int coll_id = point_list[range.x + progress_pointT];
+									collected_id_pointT[block.thread_rank()] = coll_id;
+									collected_depth_pointT[block.thread_rank()] = depths[coll_id];
+									collected_xy_pointT[block.thread_rank()] = points_xy_image[coll_id];
+									collected_conic_opacity_pointT[block.thread_rank()] = conic_opacity[coll_id];
+								}
+								block.sync();
+							}
+							pointT=0;
+						}
+						if(collected_depth[j]-depthT<=offset)
+						{
+							break;
+						}
+					}
+					// skip T calculation and atomicAdd
+				}
+			}
+		}
+
+		// Else, iterate over current batch
 		for (int j = 0; !done && j < min(BLOCK_SIZE, toDo); j++)
 		{
 			contributor++;
